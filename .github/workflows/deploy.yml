@@ -1,24 +1,34 @@
-name: Deploy Ewe Culture Daily
+name: Deploy Ewe Culture Daily with API Key
 
 on:
   push:
     branches:
-      - main  
+      - main  # Trigger the workflow when pushing to the main branch
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout code
+      # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v2
 
-
-      # Step 4: Set the GOOGLE_API_KEY as an environment variable
-      - name: Set environment variable for API key
+      # Step 2: Set the GOOGLE_API_KEY as an environment variable
+      - name: Set API key as environment variable
         run: echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" >> $GITHUB_ENV
 
-      # Step 5: Run your build or deploy script
-      - name: Run build or deploy
-        run: npm run build  # Adjust this command based on your project
+      # Step 3: Verify if the environment variable is set (without exposing it)
+      - name: Check if API key is set (Safe Check)
+        run: |
+          if [ -z "$GOOGLE_API_KEY" ]; then
+            echo "API Key is not set properly!"
+            exit 1
+          else
+            echo "API Key is set correctly."
+          fi
+
+      # Step 4: Deploy the extension 
+      - name: Deploy the extension
+        run: |
+          echo "Deploying extension without build process"
