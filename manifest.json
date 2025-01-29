@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Ewe Culture Daily",
+    "version": "1.0",
+    "description": "A chrome extension for the Ewe community for daily facts, language learning tools, and more",
+    
+    "action": {
+      "default_icon": "icon.png",
+      "default_popup":"popup.html"
+    },
+    
+    "permissions": [
+      "storage",
+      "notifications",
+      "alarms",
+      "sidePanel"
+    ],
+    
+    "background": {
+      "service_worker": "background.js"
+    },
+    
+    "host_permissions": [
+      "http://*/*",
+      "https://*/*"
+    ]
+  }
+  
