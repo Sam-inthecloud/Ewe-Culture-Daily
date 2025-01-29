@@ -1,0 +1,24 @@
+name: Deploy Ewe Culture Daily
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+
+      # Step 4: Set the GOOGLE_API_KEY as an environment variable
+      - name: Set environment variable for API key
+        run: echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" >> $GITHUB_ENV
+
+      # Step 5: Run your build or deploy script
+      - name: Run build or deploy
+        run: npm run build  # Adjust this command based on your project
