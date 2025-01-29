@@ -1,5 +1,5 @@
 // Google Cloud Translation API Key 
-const API_KEY = 'process.env.GOOGLE_API_KEY'; // Replace with your API key
+const API_KEY = 'process.env.GOOGLE_API_KEY'; //  API key
 
 // Define initial translation direction (English to Ewe by default)
 let translationDirection = 'en-to-ee'; // 'en-to-ee' for English to Ewe, 'ee-to-en' for Ewe to English
